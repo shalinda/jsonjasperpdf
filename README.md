@@ -13,11 +13,11 @@ match the fields to the Java Model object and passed json to the service
 ## Model object
 Create Model object in model package that matches the passed json
 
-##See also
+## See also
 https://stackoverflow.com/questions/10722587/how-do-i-convert-a-json-array-into-a-java-list-im-using-svenson
 
-##Build Docker
+## Build Docker
 `docker build . -t jsonpdf`
 
-##Run Docker
+## Run Docker
 `docker run -p 8080:8080 jsonpdf`
