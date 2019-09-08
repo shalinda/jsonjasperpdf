@@ -1,16 +1,18 @@
 package com.jsonpdf.controller;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicLong;
 
-import com.jsonpdf.model.Employee;
+//import com.jsonpdf.model.Employee;
 import net.sf.jasperreports.engine.JRDataSource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.sf.jasperreports.engine.JRException;
@@ -35,8 +37,11 @@ public class ReportController {
         log.info("payload: [" + payload + "] reportTemplate[" + reportTemplate + "] count[" + counter.incrementAndGet() + " calls since start");
 
         ObjectMapper mapper = new ObjectMapper();
-        Employee[] emps = mapper.readValue(payload, Employee[].class);
-        List<Employee> list = Arrays.asList(emps);
+        Class class1 = Class.forName("com.jsonpdf.model."+StringUtils.capitalize(reportTemplate));
+        Object arr1 = Array.newInstance(class1, 0);
+
+        Object[] arr = (Object[]) mapper.readValue(payload, arr1.getClass());
+        List list = Arrays.asList(arr);
 
 
         InputStream jasperStream = new ClassPathResource("report/" + reportTemplate + ".jasper").getInputStream();
@@ -46,7 +51,7 @@ public class ReportController {
 
         buildPDF(jasperStream, dos, new HashMap<String, Object>(), list);
 
-        log.info(Arrays.toString(emps));
+        log.info(Arrays.toString(arr));
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
