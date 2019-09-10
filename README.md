@@ -20,7 +20,7 @@ https://stackoverflow.com/questions/10722587/how-do-i-convert-a-json-array-into-
 `docker build . -t jsonpdf`
 
 ## Run Docker
-`docker run  docker $HOME/.m2:/root/.m2 -p 8080:8080 jsonpdf`
+`docker run  -v $HOME/.m2:/root/.m2 -p 8080:8080 jsonpdf`
 
 ## Other links
 http://www.jsonschema2pojo.org/
