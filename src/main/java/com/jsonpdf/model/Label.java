@@ -6,6 +6,7 @@ public class Label {
     private String customerLeather;
     private String color;
     private String size;
+    private String orderNo;
 
     public String getStyle() {
         return style;
@@ -21,6 +22,10 @@ public class Label {
 
     public String getSize() {
         return size;
+    }
+
+    public String getOrderNo() {
+        return orderNo;
     }
 
     public void setStyle(String style) {
@@ -39,4 +44,7 @@ public class Label {
         this.size = size;
     }
 
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
+    }
 }
