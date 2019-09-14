@@ -3,7 +3,7 @@ Objective of this project is to create REST micro service that converts a json r
 
 Alternatively you do an embeded reporting server in you application but that limits you to being java and limits scalability.
 
-This project is a light weight java spring boot application that runs as a micro service and renders you json into a pretty pdf repot and responds.
+This project is a light weight java spring boot application that runs as a micro service and renders you json into a pretty pdf report and responds.
 
 The build is containerized and with support of docker should be able build to run it with minimal effort.
 
