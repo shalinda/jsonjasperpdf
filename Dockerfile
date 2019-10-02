@@ -12,3 +12,4 @@ ONBUILD RUN mvn install
 FROM base
 CMD mvn spring-boot:run
 EXPOSE 8080
+

@@ -32,6 +32,10 @@ https://stackoverflow.com/questions/10722587/how-do-i-convert-a-json-array-into-
 ## Run Docker
 `docker run  docker $HOME/.m2:/root/.m2 -p 8080:8080 jsonpdf`
 
+## Access Swagger
+
+http://localhost:8080/swagger-ui.html
+
 ## Other links
 http://www.jsonschema2pojo.org/
 https://github.com/jasperapp/jasper

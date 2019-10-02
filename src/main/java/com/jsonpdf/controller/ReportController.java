@@ -23,12 +23,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 import org.apache.log4j.Logger;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
+
 @RestController
+@RequestMapping("/api/v1")
+@Api(value = "JSON to Jasper", description = "Operations pertaining to JSON --> Jasper")
 public class ReportController {
 
     private final AtomicLong counter = new AtomicLong();
     private static Logger log = Logger.getLogger(ReportController.class.getName());
 
+    @ApiOperation(value = "get report")
     @RequestMapping(value="/report", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity report(@RequestBody String payload, @RequestParam(value="name") String reportTemplate,
