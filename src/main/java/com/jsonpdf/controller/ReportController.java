@@ -31,7 +31,6 @@ import io.swagger.annotations.ApiResponses;
 
 
 @RestController
-@RequestMapping("/api/v1")
 @Api(value = "JSON to Jasper", description = "Operations pertaining to JSON --> Jasper")
 public class ReportController {
 
