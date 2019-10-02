@@ -24,7 +24,9 @@ Match the fields to the Java Model object and passed json to the service
 Create Model object in model package in java code that matches the passed json
 
 ## See also
-https://stackoverflow.com/questions/10722587/how-do-i-convert-a-json-array-into-a-java-list-im-using-svenson
+ - https://stackoverflow.com/questions/10722587/how-do-i-convert-a-json-array-into-a-java-list-im-using-svenson
+ 
+ - https://dzone.com/articles/spring-boot-2-restful-api-documentation-with-swagg
 
 ## Build Docker
 `docker build . -t jsonpdf`
@@ -37,8 +39,9 @@ https://stackoverflow.com/questions/10722587/how-do-i-convert-a-json-array-into-
 http://localhost:8080/swagger-ui.html
 
 ## Other links
-http://www.jsonschema2pojo.org/
-https://github.com/jasperapp/jasper
+ - http://www.jsonschema2pojo.org/
+ 
+ - https://github.com/jasperapp/jasper
 
 ## Future
 Dynamical capability to load jrxml and compile internally
