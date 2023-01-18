@@ -1,19 +1,21 @@
-package com.jsonpdf.model;
+package com.jsonpdf.model.emp;
 
-public class Employee1 {
+import java.util.List;
+
+public class Employee {
 
     private String name;
     private int age;
     private double salary;
     private String food;
-    private Employee1 child;
+    private List<Child> childs;
 
-    public Employee1 getChild() {
-        return child;
+    public List<Child> getChilds() {
+        return childs;
     }
 
-    public void setChild(Employee1 child) {
-        this.child = child;
+    public void setChilds(List<Child> childs) {
+        this.childs = childs;
     }
 
     public String getName() {
@@ -55,7 +57,7 @@ public class Employee1 {
                 ", age=" + age +
                 ", salary=" + salary +
                 ", food='" + food + '\'' +
-                ", child=" + child +
+                ", child=" + childs +
                 '}';
     }
 }

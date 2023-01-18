@@ -1,0 +1,20 @@
+# gives a fast building time basing on jsonpdf
+# will have to change the image in the docker-compose to jsonpdf1
+
+# FROM maven:3-jdk-8-alpine as base
+FROM jsonpdf as base
+#FROM 45.32.222.104/jsonpdf as base
+# RUN mkdir -p /usr/src/app
+# WORKDIR /usr/src/app
+# ONBUILD ADD . /usr/src/app
+# RUN mkdir -p ./target/classes/report
+COPY target/classes/ ./target/classes/
+# COPY target/classes/com/jsonpdf/model/* ./target/classes/com/jsonpdf/model/
+# COPY pom.xml .
+# RUN mvn dependency:go-offline
+# RUN apk --update add fontconfig ttf-dejavu
+# ONBUILD RUN mvn install
+
+FROM base
+CMD mvn spring-boot:run
+EXPOSE 8080

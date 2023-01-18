@@ -10,6 +10,15 @@ The build is containerized and with support of docker should be able build to ru
 ## Sample call
 `curl -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '[{"name":"shalinda", "age": 10, "salary": "1000.0","food":"rice", "child":{"name":"duwi"}},{"name":"dilshan", "age":21, "salary": 2300, "food":"rice", "child":{"name":"jani"}}]' http://localhost:8080/report?name=employee >>employee.pdf`
 
+Jasper file located at `report\emp\`
+Java model located at `src/main/com/jsonpdf/model/emp`
+
+## Jasper subreport
+`curl -H "Accept: application/json"  -H "Content-type: application/json" -X POST "http://jsonpdf:8080/report?product=emp&name=employee" -d '[{"name":"shalinda", "age": 10, "salary": 1000.0,"food":"rice", "childs":[{"name":"duwi", "age":10}]},{"name":"dilshan", "age":21, "salary": 2300, "food":"rice", "childs":[{"name":"jani", "age":20}]}]'>employee.pdf`
+
+Jasper file located at `report\emp1\`
+Java model located at `src/main/com/jsonpdf/model/emp1`
+
 ## Jasper compile
 Jasper report designed iReport 5.6.0
 Compile the report to target/report folder for local running

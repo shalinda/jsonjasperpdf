@@ -40,20 +40,21 @@ public class ReportController {
     @ApiOperation(value = "get report")
     @RequestMapping(value="/report", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity report(@RequestBody String payload, @RequestParam(value="name") String reportTemplate,
-                                 HttpServletResponse response) throws Exception {
+    public ResponseEntity report(@RequestBody String payload, @RequestParam(value = "name") String reportTemplate,
+            @RequestParam(value = "product") String product,
+            HttpServletResponse response) throws Exception {
 
-        log.info("payload: [" + payload + "] reportTemplate[" + reportTemplate + "] count[" + counter.incrementAndGet() + " calls since start");
+        log.info("payload: [" + payload + "] reportTemplate[" + reportTemplate + "] product[" + product + "] count[" + counter.incrementAndGet()
+                + " calls since start");
 
         ObjectMapper mapper = new ObjectMapper();
-        Class class1 = Class.forName("com.jsonpdf.model."+StringUtils.capitalize(reportTemplate));
+        Class class1 = Class.forName("com.jsonpdf.model." + product + "." + StringUtils.capitalize(reportTemplate));
         Object arr1 = Array.newInstance(class1, 0);
 
         Object[] arr = (Object[]) mapper.readValue(payload, arr1.getClass());
         List list = Arrays.asList(arr);
 
-
-        InputStream jasperStream = new ClassPathResource("report/" + reportTemplate + ".jasper").getInputStream();
+        InputStream jasperStream = new ClassPathResource("report/" + product +"/" + reportTemplate + ".jasper").getInputStream();
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         DataOutputStream dos = new DataOutputStream(baos);

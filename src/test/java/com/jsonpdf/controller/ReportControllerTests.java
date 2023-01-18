@@ -41,6 +41,7 @@ public class ReportControllerTests {
 
         this.mockMvc.perform(post("/report").
                 param("name", "employee").
+                param("product", "emp1").
                 contentType("application/json").
                 content("[{\"name\":\"shalinda\", \"age\": 10, \"salary\": \"1000.0\",\"child\":{\"name\":\"duwi\"}},{\"name\":\"dilshan\", \"age\":21, \"salary\": 2300, \"child\":{\"name\":\"jani\"}}]"))
                 .andDo(print()).andExpect(status().isOk());

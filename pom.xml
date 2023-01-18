@@ -36,9 +36,13 @@
         <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
-            <version>5.6.0</version>
+            <version>6.14.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.google.cloud.tools</groupId>
+            <artifactId>jib-maven-plugin</artifactId>
+            <version>3.0.0</version>
+        </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -85,6 +89,72 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>jasperreports-maven-plugin</artifactId>
+            <version>1.0-beta-2</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>compile-reports</goal>
+                    </goals>
+                    <configuration>
+                        <!--  jrxml file  directory-->
+                        <sourceDirectory>./report</sourceDirectory>
+                        <!-- <sourceFileExt>.jrxml</sourceFileExt> -->
+                        <compiler>net.sf.jasperreports.engine.design.JRJavacCompiler</compiler>
+                        <!--  Destination for jasper file -->
+                        <outputDirectory>./target/classes/report/</outputDirectory>
+                    </configuration>
+                </execution>
+            </executions>
+            <dependencies>
+                <!-- These plugins are used to specify correct version for jrxml xml validation -->
+                <dependency>
+                    <groupId>net.sf.jasperreports</groupId>
+                    <artifactId>jasperreports</artifactId>
+                    <version>6.14.0</version>
+                </dependency>
+
+                <dependency>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                    <version>1.2.16</version>
+                </dependency>
+
+            </dependencies>
+        </plugin>
+        <plugin>
+            <groupId>com.google.cloud.tools</groupId>
+            <artifactId>jib-maven-plugin</artifactId>
+            <version>3.0.0</version>
+            <configuration>
+                <from>
+                    <image>docker://jasper-base-image</image>
+                </from>
+                <to>
+                    <image>jsonpdf:latest</image>
+                </to>
+                <container>
+                    <ports>
+                        <port>8080</port>
+                    </ports>
+                    <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+                </container>
+                <extraDirectories>
+                    <paths>
+                    <path>
+                        <from>./target/classes/report/</from>
+                        <into>/app/classes/report</into>
+                    </path>
+                    <path>
+                        <from>./report/</from>
+                        <into>/app/classes/report</into>
+                    </path>
+                    </paths>
+                </extraDirectories>
+            </configuration>
+        </plugin>
         </plugins>
     </build>
 

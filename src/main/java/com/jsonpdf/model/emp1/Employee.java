@@ -1,4 +1,4 @@
-package com.jsonpdf.model;
+package com.jsonpdf.model.emp1;
 
 public class Employee {
 

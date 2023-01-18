@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  jsonpdf:
+    hostname: jsonpdf
+    container_name: jsonpdf
+    image: jsonpdf:latest
+#    image: 45.32.222.104/jsonpdf:latest
+    volumes:
+      - ./.m2:/root/.m2
+    expose:
+      - 8080
+    ports:
+      - "8080:8080"
